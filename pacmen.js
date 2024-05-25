@@ -2,7 +2,6 @@
 
 var pos = 0;
 var intTimeout = 0;
-
 const pacArray = [
     ['PacMan1.png', 'PacMan2.png'],
     ['PacMan3.png', 'PacMan4.png']
@@ -10,7 +9,6 @@ const pacArray = [
 var direction = 0;
 const pacMen = []; // This array holds all the pacmen
 var numberTimeout = 0;
-
 function setToRandomVelocity(scale) {
     return {
         x: Math.random() * scale,
@@ -44,7 +42,7 @@ function makePac() {
     let game = document.getElementById('game');
     document.getElementById("startGame").disabled = false;
     let velocity = setToRandomVelocity(10); 
-    let position = setToRandomPosition(100,minY);
+    let position = setToRandomPosition(100,minY+50);
     let newimg = document.createElement('img');
     let focus = 0;
     let direction = 0;
@@ -82,10 +80,16 @@ function update() {
 
 function checkCollisions(item) {
     let minY = document.getElementById("title").clientHeight + document.getElementById("divider").clientHeight + document.getElementById("buttons").clientHeight;
-    if ((item.position.x + item.velocity.x + item.newimg.width > document.getElementById("game").clientWidth) || 
-    (item.position.x + item.velocity.x < 0)) item.velocity.x = -item.velocity.x;
-    if ((item.position.y + item.velocity.y + item.newimg.height > document.getElementById("game").clientHeight) || 
-    (item.position.y + item.velocity.y < minY)) item.velocity.y = -item.velocity.y;
+    if ((item.position.x + item.velocity.x + item.newimg.width > document.getElementById("game").clientWidth)){
+        item.velocity.x = - Math.abs(item.velocity.x);
+    }else if (item.position.x + item.velocity.x < 0) {
+        item.velocity.x = Math.abs(item.velocity.x);
+    }
+    if (item.position.y + item.velocity.y + item.newimg.height > (document.getElementById("game").clientHeight) + minY) {
+        item.velocity.y = -Math.abs(item.velocity.y);
+    }else if (item.position.y + item.velocity.y - (item.newimg.height/2) < minY) {
+        item.velocity.y = Math.abs(item.velocity.y)
+    } 
 }
 
 function determineLineMovement(item) {

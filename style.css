@@ -1,7 +1,6 @@
 .game{
     background-color: rgb(47, 47, 46);
-    background-size: cover;
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 h1{
