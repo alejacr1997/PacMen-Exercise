@@ -1,3 +1,5 @@
+
+
 var pos = 0;
 var intTimeout = 0;
 
@@ -23,32 +25,35 @@ function setToRandomPosition(scale,minY) {
     }
 }
 
-// Factory to make a PacMan at a random position with random velocity
+function help() {
+    var helpButton = document.getElementById("help");
+    var closeButton = document.getElementById("close");
+    var favDialog = document.getElementById("favDialog");
+
+    helpButton.addEventListener("click", function () {
+      favDialog.showModal();
+    });
+
+    closeButton.addEventListener("click", function () {
+      favDialog.close();
+    });
+  };
+
 function makePac() {
     let minY = document.getElementById("title").clientHeight + document.getElementById("divider").clientHeight + document.getElementById("buttons").clientHeight;
     let game = document.getElementById('game');
     document.getElementById("startGame").disabled = false;
-    // returns an object with random values scaled {x: 33, y: 21}
-    let velocity = setToRandomVelocity(10); // {x:?, y:?}
+    let velocity = setToRandomVelocity(10); 
     let position = setToRandomPosition(100,minY);
-    console.log(game.clientHeight);
-    // Add image to div id = game
-    
     let newimg = document.createElement('img');
     let focus = 0;
     let direction = 0;
     newimg.style.position = 'absolute';
     newimg.src = pacArray[direction][focus];
     newimg.width = 100;
-    //
-    // set position here 
-    //
     newimg.style.top = position.y;
     newimg.style.left = position.x;
-
-    // add new Child image to game
     game.appendChild(newimg);
-    // return details in an object
     return {
         position,
         velocity,
@@ -62,7 +67,6 @@ function update() {
     document.getElementById("startGame").disabled = true;
     document.getElementById("addPacMan").disabled = true;
     document.getElementById("stopGame").disabled = false;
-    //loop over pacmen array and move each one and move image in DOM
     pacMen.forEach((item) => {
         checkCollisions(item);
         determineLineMovement(item);
@@ -98,4 +102,5 @@ function stop() {
 
 function makeOne() {
     pacMen.push(makePac()); // add a new PacMan
+    document.getElementById("quantity").value = pacMen.length;
 }

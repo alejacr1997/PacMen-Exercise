@@ -3,8 +3,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="pacmen.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+<script  src="pacmen.js" ></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,13 +18,37 @@
 
 <body>
     <h1 id="title"> PacMen - Exercise</h1>
-    <div id='buttons'>
-        <button onclick='makeOne()' width='200' height='30' class="btn btn-primary" id="addPacMan">Add PacMan</button>
-        <button onclick='update()' width='200' height='30' class="btn btn-success" id="startGame" disabled = true>Start Game</button>
-        <button onclick='stop()' width='200' height='30' class="btn btn-danger" id="stopGame" disabled = true>Stop Game</button>
+    <div id='buttons' >
+        <button onclick='makeOne()' width='100' height='30' class="btn btn-primary" id="addPacMan">Add PacMan</button>
+        <button onclick='update()' width='100' height='30' class="btn btn-success" id="startGame" disabled = true>Start</button>
+        <button onclick='stop()' width='100' height='30' class="btn btn-danger" id="stopGame" disabled = true>Stop</button>
+        <input type="text" name="quantity" id="quantity" placeholder="Number of PacMen" class="numberPacMen" disabled>
+        <button width='100' height='30' class="btn btn-light" data-toggle="modal" data-target="#myModal" style="float: right;">?</button>
     </div>
     <div class="b-example-divider" id="divider"></div>
     <div id="game" class="game"></div>
 </body>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Instrucciones</h4>
+        </div>
+        <div class="modal-body">
+          <p><span style="color: blue;">Add PacMan: </span>Crea un nuevo Pac Man en la pantalla</p>
+          <p><span style="color: green">Start:</span> Hace que los Pac Man se empiecen a mover por la pantalla</p>
+          <p><span style="color: red">Stop: </span>Detiene todos los Pac Man</p>
+          <p>El botón de start se deshabilita mientras no existan Pac Man y el botón de stop no se activa si no se ha iniciado el juego.
+            Además no se pueden crear Pac Man mientras se encuentran en movimiento
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 </html>
