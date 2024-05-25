@@ -18,12 +18,18 @@
 
 <body>
     <h1 id="title"> PacMen - Exercise</h1>
-    <div id='buttons' >
-        <button onclick='makeOne()' width='100' height='30' class="btn btn-primary" id="addPacMan">Add PacMan</button>
-        <button onclick='update()' width='100' height='30' class="btn btn-success" id="startGame" disabled = true>Start</button>
-        <button onclick='stop()' width='100' height='30' class="btn btn-danger" id="stopGame" disabled = true>Stop</button>
-        <input type="text" name="quantity" id="quantity" placeholder="# PacMen" class="numberPacMen" disabled>
-        <button width='100' height='30' class="btn btn-light" data-toggle="modal" data-target="#myModal" style="float: right;">?</button>
+    <div id='buttons' class="row justify-content-center" >
+        <div class="col-8 col-md-10">
+            <div class="container">
+            <button onclick='makeOne()' width='100' height='30' class="btn btn-primary" id="addPacMan">Add PacMan</button>
+            <button onclick='update()' width='100' height='30' class="btn btn-success" id="startGame" disabled = true>Start</button>
+            <button onclick='stop()' width='100' height='30' class="btn btn-danger" id="stopGame" disabled = true>Stop</button>
+            <input type="text" name="quantity" id="quantity" placeholder="# PacMen" class="numberPacMen" disabled>
+        </div>
+        </div>
+        <div class="col-4 col-md-2">
+            <button width='100' height='30' class="btn btn-light" data-toggle="modal" data-target="#myModal" style="float: right;">?</button>
+        </div> 
     </div>
     <div class="b-example-divider" id="divider"></div>
     <div id="game" class="game"></div>
